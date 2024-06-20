@@ -3,8 +3,8 @@ const hashPassword = require('./hashPassword.js');
 
 const db = new Firestore({
     keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
-    projectId: 'submissionmlgc-mohadibsyambudi',
-    databaseId: 'predictions',
+    projectId: 'carakamobile-c241-pr556',
+    databaseId: 'caraka',
   });
 
 const editProfile = async (request, h) => {
