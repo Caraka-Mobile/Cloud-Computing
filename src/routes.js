@@ -1,5 +1,7 @@
 const { getHome, registration, login, logout } = require("./handlers");
 const { getUserProfileHandler } = require("../service/getProfile");
+const { editProfile } = require("../service/editProfile");
+
 
 routes = [
   {
@@ -35,6 +37,11 @@ routes = [
     method: "POST",
     path: "/logout",
     handler: logout,
+  },
+  {
+    method: "PUT",
+    path: "/editProfile",
+    handler: editProfile,
   }
 ];
 
