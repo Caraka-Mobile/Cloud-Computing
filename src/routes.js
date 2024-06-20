@@ -1,4 +1,4 @@
-const { getHome, registration, login} = require("./handlers");
+const { getHome, registration, login, logout } = require("./handlers");
 const { getUserProfileHandler } = require("../service/getProfile");
 
 routes = [
@@ -30,6 +30,11 @@ routes = [
       auth: false
     },
     handler: login,
+  },
+  {
+    method: "POST",
+    path: "/logout",
+    handler: logout,
   }
 ];
 

@@ -5,6 +5,7 @@ const Boom = require('@hapi/boom');
 // const HapiAuthJwt2 = require('hapi-auth-jwt2');
 require('dotenv').config();
 const routes = require("./routes");
+const { blacklist } = require("./handlers.js");
 // const { verifyToken } = require("../utils/auth/auth.js");
 
 const jwtSecret = process.env.JWT_SECRET_KEY;
@@ -26,11 +27,14 @@ const init = async () => {
           sub: false,
       },
       validate: (artifacts, request, h) => {
-          return {
-              isValid: true,
-              credentials: { user: artifacts.decoded.payload }
-          };
-      }
+        if (blacklist.has(artifacts.token)) {
+            return { isValid: false };
+        }
+        return {
+            isValid: true,
+            credentials: { user: artifacts.decoded.payload }
+        };
+    }
   });
 
   server.auth.default('jwt');

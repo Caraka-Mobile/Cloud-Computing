@@ -8,7 +8,7 @@ const comparePassword = require("../service/validatePassword.js");
 const getUserFromEmail = require("../service/signIn.js");
 const { createToken } = require("../utils/auth/auth.js");
 
-
+const blacklist = new Set();
 
 const getHome = () => {
   return "Hewwo world";
@@ -87,5 +87,13 @@ const login = async (request, h) => {
   }
 }
 
+const logout = async (request, h) => {
+  const authorization = request.headers.authorization;
+  const token = authorization.split(' ')[1];
 
-module.exports = { getHome, registration, login};
+  blacklist.add(token);
+  return h.response({ message: 'Logout successful' }).code(200);
+}
+
+
+module.exports = { getHome, registration, login, logout, blacklist };
