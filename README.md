@@ -19,3 +19,24 @@ Caraka Mobile is built as a requirement for Bangkit 2023's Product-based Capston
 | Haryo Wiradito | M010D4KY1903 | Machine Learning |
 | Fahrur Rozi | M299D4KY2724 | Machine Learning |
 | Muhammad Alfin Farhansyah | A009D4KY4497 | Machine Learning |
+
+## Dependencies
+- @google-cloud/firestore
+- @google-cloud/secret-manager
+- @hapi/hapi
+- hapi/jwt
+- bcrypt
+- dotenv
+- hapi-auth-jwt2
+- jsonwebtoken
+- nanoid
+- nodemon
+
+## Activate API
+- Install all depedencies
+- Generate key with
+  ```
+  node ./utils/auth/generateKey.js
+  ```
+- Copy secret key into .env
+- Run server
